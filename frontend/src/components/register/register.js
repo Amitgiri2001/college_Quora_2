@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Option from "./Option";
+
 // add all college
 import Cname from "../College";
 // console.log(college[0].college);
@@ -29,8 +29,12 @@ const Register = () => {
   const register = () => {
     const { name, email, password, reEnterPassword,college_name } = user;
     if (name && email && password && password === reEnterPassword && college_name ) {
+     
       axios.post("/register", user).then((res) => {
         alert(res.data.message);
+        window.localStorage.setItem("name",user.name);
+        window.localStorage.setItem("cname",user.college_name);
+        console.log(user.name)
         history("/login");
       });
     } else {
@@ -40,7 +44,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      {console.log("User", user)}
+      
       <h1>Register</h1>
       <input
         type="text"
@@ -50,8 +54,8 @@ const Register = () => {
         onChange={handleChange}
       ></input>
       {/* ---------select college-------------- */}
-      <label htmlFor="">College name:</label>
-      <select style={{width:"200px"}} name="college_name" onChange={handleChange}>
+      
+      <select className="college_name" name="college_name" onChange={handleChange}>
         {/* {Array.isArray(Cname) &&
           Cname.forEach((name,index,array) => {
             console.log(name);
@@ -83,12 +87,15 @@ const Register = () => {
         placeholder="Re-enter Password"
         onChange={handleChange}
       ></input>
+      <div className="rButton"> 
+
       <div className="button" onClick={register}>
         Register
       </div>
       <div>or</div>
       <div className="button" onClick={() => history("/login")}>
         Login
+      </div>
       </div>
     </div>
   );

@@ -20,10 +20,10 @@ import axios from "axios";
 
 
 const QuoraHeader = ({ User }) => {
-  // console.log(User.User.name);
-  const { name, email,college_name } = User;
-  // console.log(name);
-  // console.log(email);
+  console.log(User);
+  const { name,cname } = User;
+  console.log("QHead name " + name);
+  console.log("QHead cname "+ User.cname);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [inputUrl, setInputUrl] = useState("");
@@ -31,7 +31,7 @@ const QuoraHeader = ({ User }) => {
   const Close = <CloseIcon />;
 
   const handleSubmit = async () => {
-    if (question !== "" && college_name === "Uit") {
+    if (question !== "" && cname === "Uit") {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -65,6 +65,8 @@ const QuoraHeader = ({ User }) => {
     console.log(User);
     User = {};
     console.log(User);
+    window.localStorage.removeItem("isLoggedIn")
+    window.localStorage.removeItem("user1")
     window.location.href = "/";
   }
 

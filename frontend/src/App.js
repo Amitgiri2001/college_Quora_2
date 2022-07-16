@@ -10,18 +10,27 @@ import { BrowserRouter as Router, Routes, Route }
 import { useState } from "react";
 
 function App() {
+const loggedIn=window.localStorage.getItem("isLoggedIn");
+const name=window.localStorage.getItem("name");
+const cname=window.localStorage.getItem("cname");
+
 
   const [ user, setLoginUser] = useState({})
   return (
     <div className="App">
+    {console.log(loggedIn)}
+    
+
       <Router>
         <Routes>
-          <Route exact path="/" element={user && user._id ? <Quora User={user} /> : <Login setLoginUser={setLoginUser}/>} />
+          <Route exact path="/" element={loggedIn ? <Quora name={name} cname={cname} /> : <Login setLoginUser={setLoginUser}/>} />
             
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
             
           
           <Route path="/register" element={<Register />} />
+
+          
             
           
         </Routes>

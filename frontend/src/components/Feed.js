@@ -5,6 +5,10 @@ import Post from "./Post";
 import axios from "axios";
 
 function Feed({User}) {
+  console.log(User);
+  const { name,cname } = User;
+  console.log("Feed name " + name);
+  console.log("Feed cname "+ User.cname);
   
   const [posts,setPosts]=useState([]);
 

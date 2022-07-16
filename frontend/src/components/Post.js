@@ -37,7 +37,12 @@ function Post({ post, User }) {
   const [answer, setAnswer] = useState("");
   const [uVote, setUVote] = useState(0);
   const [dec,setDec]=useState(0);
-  const { college_name, name } = User;
+  console.log(User);
+  const { name,cname } = User;
+  console.log("Post name " + name);
+  console.log("Post cname "+ User.cname);
+
+  
   const handleQuill = (value) => {
     setAnswer(value);
   }
@@ -67,7 +72,7 @@ function Post({ post, User }) {
   }
 
   const handleSubmit = async () => {
-    if (post?._id && answer !== "" && college_name === "Uit") {
+    if (post?._id && answer !== "" && cname === "Uit") {
       const config = {
         "Content-Type": "application/json"
       }
