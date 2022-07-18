@@ -12,7 +12,7 @@ function Quora(User) {
       <QuoraHeader User={User} />
       <div className="quora__contents">
         <div className="quora__content">
-          <Sidebar />
+          {/* <Sidebar /> */}
           <Feed User={User}/>
           <Widget />
         </div>
