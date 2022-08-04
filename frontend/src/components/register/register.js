@@ -32,8 +32,8 @@ const Register = () => {
      
       axios.post("/register", user).then((res) => {
         alert(res.data.message);
-        window.localStorage.setItem("name",user.name);
-        window.localStorage.setItem("cname",user.college_name);
+        // window.localStorage.setItem("name",user.name);
+        // window.localStorage.setItem("cname",user.college_name);
         console.log(user.name)
         history("/login");
       });

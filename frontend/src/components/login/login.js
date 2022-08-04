@@ -28,8 +28,9 @@ const Login = ({ setLoginUser}) => {
             alert(res.data.message)
             setLoginUser(res.data.user)
             window.localStorage.setItem("isLoggedIn",true);
-           
-            
+           console.log("cname in log in",res.data.user.name)
+           window.localStorage.setItem("name",res.data.user.name);
+           window.localStorage.setItem("cname",res.data.user.college_name);
             history("/")
         })
     }
